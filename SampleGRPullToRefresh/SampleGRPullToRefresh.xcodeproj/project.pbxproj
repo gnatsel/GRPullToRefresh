@@ -10,15 +10,15 @@
 		343C523E1B1C58D600F9EE3B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C523D1B1C58D600F9EE3B /* main.m */; };
 		343C52491B1C58D600F9EE3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343C52481B1C58D600F9EE3B /* Images.xcassets */; };
 		343C52581B1C58D600F9EE3B /* SampleGRPullToRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C52571B1C58D600F9EE3B /* SampleGRPullToRefreshTests.m */; };
-		343C52681B1C58E100F9EE3B /* GRRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C52631B1C58E100F9EE3B /* GRRefreshView.m */; };
-		343C52691B1C58E100F9EE3B /* UIScrollView+GRInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C52651B1C58E100F9EE3B /* UIScrollView+GRInfiniteScrolling.m */; };
-		343C526A1B1C58E100F9EE3B /* UIScrollView+GRPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C52671B1C58E100F9EE3B /* UIScrollView+GRPullToRefresh.m */; };
 		343C52731B1C5D0B00F9EE3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C52721B1C5D0B00F9EE3B /* AppDelegate.m */; };
 		343C52791B1C5D2300F9EE3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 343C52751B1C5D2300F9EE3B /* LaunchScreen.xib */; };
 		343C527A1B1C5D2300F9EE3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343C52771B1C5D2300F9EE3B /* Main.storyboard */; };
 		343C527E1B1C5D2D00F9EE3B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C527D1B1C5D2D00F9EE3B /* ViewController.m */; };
 		343C52811B1C5FF500F9EE3B /* GRCustomRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C52801B1C5FF500F9EE3B /* GRCustomRefreshView.m */; };
 		343C52851B1C623700F9EE3B /* UIColor+ColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 343C52841B1C623700F9EE3B /* UIColor+ColorUtils.m */; };
+		3497EDBB1B1DAE3000935896 /* GRRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3497EDB61B1DAE3000935896 /* GRRefreshView.m */; };
+		3497EDBC1B1DAE3000935896 /* UIScrollView+GRInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 3497EDB81B1DAE3000935896 /* UIScrollView+GRInfiniteScrolling.m */; };
+		3497EDBD1B1DAE3000935896 /* UIScrollView+GRPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3497EDBA1B1DAE3000935896 /* UIScrollView+GRPullToRefresh.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,12 +39,6 @@
 		343C52511B1C58D600F9EE3B /* SampleGRPullToRefreshTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleGRPullToRefreshTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		343C52561B1C58D600F9EE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		343C52571B1C58D600F9EE3B /* SampleGRPullToRefreshTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleGRPullToRefreshTests.m; sourceTree = "<group>"; };
-		343C52621B1C58E100F9EE3B /* GRRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRRefreshView.h; sourceTree = "<group>"; };
-		343C52631B1C58E100F9EE3B /* GRRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRRefreshView.m; sourceTree = "<group>"; };
-		343C52641B1C58E100F9EE3B /* UIScrollView+GRInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+GRInfiniteScrolling.h"; sourceTree = "<group>"; };
-		343C52651B1C58E100F9EE3B /* UIScrollView+GRInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+GRInfiniteScrolling.m"; sourceTree = "<group>"; };
-		343C52661B1C58E100F9EE3B /* UIScrollView+GRPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+GRPullToRefresh.h"; sourceTree = "<group>"; };
-		343C52671B1C58E100F9EE3B /* UIScrollView+GRPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+GRPullToRefresh.m"; sourceTree = "<group>"; };
 		343C52711B1C5D0B00F9EE3B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		343C52721B1C5D0B00F9EE3B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		343C52761B1C5D2300F9EE3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = SampleGRPullToRefresh/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
@@ -55,6 +49,12 @@
 		343C52801B1C5FF500F9EE3B /* GRCustomRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRCustomRefreshView.m; sourceTree = "<group>"; };
 		343C52831B1C623700F9EE3B /* UIColor+ColorUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorUtils.h"; sourceTree = "<group>"; };
 		343C52841B1C623700F9EE3B /* UIColor+ColorUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorUtils.m"; sourceTree = "<group>"; };
+		3497EDB51B1DAE3000935896 /* GRRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRRefreshView.h; sourceTree = "<group>"; };
+		3497EDB61B1DAE3000935896 /* GRRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRRefreshView.m; sourceTree = "<group>"; };
+		3497EDB71B1DAE3000935896 /* UIScrollView+GRInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+GRInfiniteScrolling.h"; sourceTree = "<group>"; };
+		3497EDB81B1DAE3000935896 /* UIScrollView+GRInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+GRInfiniteScrolling.m"; sourceTree = "<group>"; };
+		3497EDB91B1DAE3000935896 /* UIScrollView+GRPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+GRPullToRefresh.h"; sourceTree = "<group>"; };
+		3497EDBA1B1DAE3000935896 /* UIScrollView+GRPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+GRPullToRefresh.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 		343C523A1B1C58D600F9EE3B /* SampleGRPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				343C52611B1C58E100F9EE3B /* GRPullToRefresh */,
+				3497EDB41B1DAE3000935896 /* GRPullToRefresh */,
 				343C52701B1C5D0B00F9EE3B /* application */,
 				343C527B1B1C5D2D00F9EE3B /* controllers */,
 				343C52741B1C5D1800F9EE3B /* views */,
@@ -131,19 +131,6 @@
 				343C52561B1C58D600F9EE3B /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		343C52611B1C58E100F9EE3B /* GRPullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				343C52621B1C58E100F9EE3B /* GRRefreshView.h */,
-				343C52631B1C58E100F9EE3B /* GRRefreshView.m */,
-				343C52641B1C58E100F9EE3B /* UIScrollView+GRInfiniteScrolling.h */,
-				343C52651B1C58E100F9EE3B /* UIScrollView+GRInfiniteScrolling.m */,
-				343C52661B1C58E100F9EE3B /* UIScrollView+GRPullToRefresh.h */,
-				343C52671B1C58E100F9EE3B /* UIScrollView+GRPullToRefresh.m */,
-			);
-			path = GRPullToRefresh;
 			sourceTree = "<group>";
 		};
 		343C52701B1C5D0B00F9EE3B /* application */ = {
@@ -182,6 +169,20 @@
 				343C52841B1C623700F9EE3B /* UIColor+ColorUtils.m */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		3497EDB41B1DAE3000935896 /* GRPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				3497EDB51B1DAE3000935896 /* GRRefreshView.h */,
+				3497EDB61B1DAE3000935896 /* GRRefreshView.m */,
+				3497EDB71B1DAE3000935896 /* UIScrollView+GRInfiniteScrolling.h */,
+				3497EDB81B1DAE3000935896 /* UIScrollView+GRInfiniteScrolling.m */,
+				3497EDB91B1DAE3000935896 /* UIScrollView+GRPullToRefresh.h */,
+				3497EDBA1B1DAE3000935896 /* UIScrollView+GRPullToRefresh.m */,
+			);
+			name = GRPullToRefresh;
+			path = ../../GRPullToRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,11 +287,11 @@
 			files = (
 				343C52811B1C5FF500F9EE3B /* GRCustomRefreshView.m in Sources */,
 				343C527E1B1C5D2D00F9EE3B /* ViewController.m in Sources */,
-				343C52681B1C58E100F9EE3B /* GRRefreshView.m in Sources */,
-				343C526A1B1C58E100F9EE3B /* UIScrollView+GRPullToRefresh.m in Sources */,
-				343C52691B1C58E100F9EE3B /* UIScrollView+GRInfiniteScrolling.m in Sources */,
 				343C523E1B1C58D600F9EE3B /* main.m in Sources */,
+				3497EDBB1B1DAE3000935896 /* GRRefreshView.m in Sources */,
+				3497EDBD1B1DAE3000935896 /* UIScrollView+GRPullToRefresh.m in Sources */,
 				343C52731B1C5D0B00F9EE3B /* AppDelegate.m in Sources */,
+				3497EDBC1B1DAE3000935896 /* UIScrollView+GRInfiniteScrolling.m in Sources */,
 				343C52851B1C623700F9EE3B /* UIColor+ColorUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +487,7 @@
 				343C525D1B1C58D600F9EE3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		343C525E1B1C58D600F9EE3B /* Build configuration list for PBXNativeTarget "SampleGRPullToRefreshTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +496,7 @@
 				343C52601B1C58D600F9EE3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
