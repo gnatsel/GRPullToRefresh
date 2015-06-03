@@ -41,37 +41,31 @@
     }
     return dataArray;
 }
--(void)resetData{
+-(void)endPullToRefreshAnimation{
     if(_pullToRefreshView.isAnimating){
         _pullToRefreshView.shouldEndAnimating = YES;
     }
-    _dataSource = [self generateData];
-    [_tableView reloadData];
+    
 }
 
--(void)appendData{
+-(void)endInfiniteScrollingAnimation{
     if(_infiniteScrollingRefreshView.isAnimating){
         _infiniteScrollingRefreshView.shouldEndAnimating = YES;
     }
-    NSMutableArray *dataArray = [self generateData];
-    
-    NSMutableArray *indexPathsToInsertArray = [NSMutableArray arrayWithCapacity:dataArray.count];
-    for(NSInteger i = 0; i < dataArray.count ; i++){
-        [indexPathsToInsertArray addObject:[NSIndexPath indexPathForRow:i+_dataSource.count inSection:0]];
-    }
-    
-    [_dataSource addObjectsFromArray:dataArray];
-    [_tableView beginUpdates];
-    [_tableView insertRowsAtIndexPaths:indexPathsToInsertArray withRowAnimation:UITableViewRowAnimationBottom];
-    [_tableView endUpdates];
+
     
 }
 -(void)configurePullToRefresh{
     if(!_pullToRefreshView){
-        _pullToRefreshView = [[GRCustomRefreshView alloc]initWithFrame:CGRectMake(0, 0, 60, 60) ];
         ViewController *weakSelf = self;
+
+        _pullToRefreshView = [[GRCustomRefreshView alloc]initWithFrame:CGRectMake(0, 0, 60, 60) ];
+        [_pullToRefreshView addEndRefreshAnimationCompletionHandler:^{
+            weakSelf.dataSource = [weakSelf generateData];
+            [weakSelf.tableView reloadData];
+        }];
         [_tableView addPullToRefreshWithActionHandler:^{
-            [weakSelf performSelector:@selector(resetData) withObject:nil afterDelay:2];
+            [weakSelf performSelector:@selector(endPullToRefreshAnimation) withObject:nil afterDelay:2];
         } refreshView:_pullToRefreshView];
     }
 
@@ -82,8 +76,21 @@
     if(!_infiniteScrollingRefreshView){
         _infiniteScrollingRefreshView = [[GRCustomRefreshView alloc]initWithFrame:CGRectMake(0, 0, 60, 60) ];
         ViewController *weakSelf = self;
+        [_infiniteScrollingRefreshView addEndRefreshAnimationCompletionHandler:^{
+            NSMutableArray *dataArray = [weakSelf generateData];
+            
+            NSMutableArray *indexPathsToInsertArray = [NSMutableArray arrayWithCapacity:dataArray.count];
+            for(NSInteger i = 0; i < dataArray.count ; i++){
+                [indexPathsToInsertArray addObject:[NSIndexPath indexPathForRow:i+_dataSource.count inSection:0]];
+            }
+            
+            [weakSelf.dataSource addObjectsFromArray:dataArray];
+            [weakSelf.tableView beginUpdates];
+            [weakSelf.tableView insertRowsAtIndexPaths:indexPathsToInsertArray withRowAnimation:UITableViewRowAnimationBottom];
+            [weakSelf.tableView endUpdates];
+        }];
         [_tableView addInfiniteScrollingWithActionHandler:^{
-            [weakSelf performSelector:@selector(appendData) withObject:nil afterDelay:2];
+            [weakSelf performSelector:@selector(endInfiniteScrollingAnimation) withObject:nil afterDelay:2];
         } refreshView:_infiniteScrollingRefreshView];
     }
 

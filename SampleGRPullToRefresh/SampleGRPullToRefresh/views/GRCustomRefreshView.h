@@ -12,8 +12,7 @@
 typedef NS_ENUM(int, GRMiniLoaderAnimationState) {
     GRMiniLoaderAnimationStateFirst,
     GRMiniLoaderAnimationStateSecond,
-    GRMiniLoaderAnimationStateThird,
-    GRMiniLoaderAnimationStateFourth
+    GRMiniLoaderAnimationStateThird
 };
 @interface GRCustomRefreshView : GRRefreshView
 
@@ -47,4 +46,9 @@ typedef NS_ENUM(int, GRMiniLoaderAnimationState) {
  */
 @property (nonatomic, strong) UIColor *progressTintColor;
 
+@property (nonatomic, copy) void (^endRefreshAnimationCompletionHandler)(void);
+
+
+
+- (void)addEndRefreshAnimationCompletionHandler:(void (^)(void))completionHandler;
 @end

@@ -198,16 +198,6 @@
     }
 }
 
--(void)logViews:(UIView *)view defaultPadding:(NSString *)defaultPadding padding:(NSString *)padding{
-    if([view isKindOfClass:[UIScrollView class]]){
-        UIScrollView *sv = (UIScrollView *)view;
-        NSLog(@"%@%@ %@ ;contentInset: %@;contentSize: %@",defaultPadding,padding,sv, NSStringFromUIEdgeInsets(sv.contentInset), NSStringFromCGSize(sv.contentSize));
-    }
-    else NSLog(@"%@%@ %@",defaultPadding,padding,view);
-    for(UIView *subview in view.subviews){
-        [self logViews:subview defaultPadding:[defaultPadding stringByAppendingString:padding] padding:padding];
-    }
-}
 - (void)setInfiniteScrollingState:(GRInfiniteScrollingState)newState {
     
     if(_infiniteScrollingState == newState)

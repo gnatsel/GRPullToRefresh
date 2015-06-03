@@ -129,6 +129,8 @@
         self.timer = nil;
     }
     [self setProgress:0 animated:YES];
+    if(_endRefreshAnimationCompletionHandler)
+        _endRefreshAnimationCompletionHandler();
 }
 
 
@@ -199,60 +201,68 @@
             [self thirdAnimation];
             break;
         }
-        case GRMiniLoaderAnimationStateFourth:{
-            break;
-        }
         default:break;
     }
 }
 
++(CABasicAnimation *)animationForKeyPath:(NSString *)keyPath
+                               fromValue:(id)fromValue
+                                 toValue:(id)toValue
+                                duration:(CFTimeInterval)duration
+                               beginTime:(CGFloat)beginTime{
+    return [GRCustomRefreshView animationForKeyPath:keyPath
+                                          fromValue:fromValue
+                                            toValue:toValue
+                                           duration:duration
+                                          beginTime:beginTime
+                                           delegate:nil];
+}
++(CABasicAnimation *)animationForKeyPath:(NSString *)keyPath
+                               fromValue:(id)fromValue
+                                 toValue:(id)toValue
+                                duration:(CFTimeInterval)duration
+                               beginTime:(CGFloat)beginTime
+                               delegate:(id)delegate{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:keyPath];
+    animation.fromValue = fromValue;
+    animation.toValue = toValue;
+    animation.duration = duration;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.delegate = delegate;
+    animation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
+    animation.beginTime = beginTime;
+    return animation;
+}
 
 
 -(void)firstAnimation{
-    CABasicAnimation *firstAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    firstAnimation.fromValue = @0;
-    firstAnimation.toValue = @1;
-    firstAnimation.duration = 0.75f;
-    firstAnimation.removedOnCompletion = NO;
-    firstAnimation.fillMode = kCAFillModeForwards;
-    firstAnimation.delegate = self;
-    firstAnimation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
+    CABasicAnimation *firstAnimation = [GRCustomRefreshView animationForKeyPath:@"strokeEnd"
+                                                                      fromValue:@0
+                                                                        toValue:@1
+                                                                       duration:0.75f
+                                                                      beginTime:0
+                                                                       delegate:self];
     [self.progressLayer addAnimation:firstAnimation forKey:@"animation"];
 
 }
 
 -(void)secondAnimation{
-    CABasicAnimation *strokeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeStart"];
-    strokeAnimation.fromValue = @0;
-    strokeAnimation.toValue = @1;
-    strokeAnimation.duration = 0.5f;
-    strokeAnimation.removedOnCompletion = NO;
-    strokeAnimation.fillMode = kCAFillModeForwards;
-    //strokeAnimation.delegate = self;
-    strokeAnimation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
-    strokeAnimation.beginTime = 0.5f;
-
+    CABasicAnimation *strokeAnimation = [GRCustomRefreshView animationForKeyPath:@"strokeStart"
+                                                                       fromValue:@0
+                                                                         toValue:@1
+                                                                        duration:0.5f
+                                                                       beginTime:0.5];
     
-    //[self.progressLayer addAnimation:strokeAnimation forKey:@"animation"];
-
-    
-    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotateAnimation.fromValue = @0;
-    rotateAnimation.toValue = @(M_PI+M_PI_2);
-    rotateAnimation.duration = 0.5f;
-    rotateAnimation.removedOnCompletion = NO;
-    rotateAnimation.fillMode = kCAFillModeForwards;
-    //rotateAnimation.delegate = self;
-    rotateAnimation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
-    rotateAnimation.beginTime = 0.75f;
-    
-    //[self.progressLayer addAnimation:rotateAnimation forKey:@"animation2"];
-    
+    CABasicAnimation *rotateAnimation = [GRCustomRefreshView animationForKeyPath:@"transform.rotation.z"
+                                                                       fromValue:@0
+                                                                         toValue:@(M_PI+M_PI_2)
+                                                                        duration:0.75f
+                                                                       beginTime:0.75];
     
     CAAnimationGroup *secondAnimation = [CAAnimationGroup animation];
     secondAnimation.removedOnCompletion = NO;
     secondAnimation.fillMode = kCAFillModeForwards;
-    //secondAnimation.duration = 0.5f;
     secondAnimation.duration = 1.25f;
     secondAnimation.animations = @[strokeAnimation,rotateAnimation];
     secondAnimation.delegate = self;
@@ -261,29 +271,18 @@
 }
 -(void)thirdAnimation{
     [self initProgressTintColor];
-    CABasicAnimation *strokeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    strokeAnimation.fromValue = @0;
-    strokeAnimation.toValue = @1;
-    strokeAnimation.duration = 0.75f;
-    strokeAnimation.removedOnCompletion = NO;
-    strokeAnimation.fillMode = kCAFillModeForwards;
-    //strokeAnimation.delegate = self;
-    strokeAnimation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
+    CABasicAnimation *strokeAnimation = [GRCustomRefreshView animationForKeyPath:@"strokeEnd"
+                                                                      fromValue:@0
+                                                                        toValue:@1
+                                                                       duration:0.75f
+                                                                      beginTime:0];
     
+    CABasicAnimation *rotateAnimation = [GRCustomRefreshView animationForKeyPath:@"transform.rotation.z"
+                                                                       fromValue:@(M_PI+M_PI_2)
+                                                                         toValue:@(2*M_PI)
+                                                                        duration:0.75f
+                                                                       beginTime:0];
     
-    //[self.progressLayer addAnimation:strokeAnimation forKey:@"animation"];
-    
-    
-    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotateAnimation.fromValue = @(M_PI+M_PI_2);
-    rotateAnimation.toValue = @(2*M_PI);
-    rotateAnimation.duration = 0.75f;
-    rotateAnimation.removedOnCompletion = NO;
-    rotateAnimation.fillMode = kCAFillModeForwards;
-    //rotateAnimation.delegate = self;
-    rotateAnimation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
-    
-    //[self.progressLayer addAnimation:rotateAnimation forKey:@"animation2"];
     
     
     CAAnimationGroup *thirdAnimation = [CAAnimationGroup animation];
@@ -292,24 +291,16 @@
     //secondAnimation.duration = 0.5f;
     thirdAnimation.duration = 1.25f;
     if(self.shouldEndAnimating){
-        CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-        scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.5f, 0.5f, 1.f)];
-        scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.f, 1.f, 1.f)];
-        scaleAnimation.duration = 0.18f;
-        scaleAnimation.removedOnCompletion = NO;
-        scaleAnimation.fillMode = kCAFillModeForwards;
-        scaleAnimation.beginTime = 0.57f;
-        scaleAnimation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
-        
-        CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        alphaAnimation.fromValue = @(1.f);
-        alphaAnimation.toValue = @(0.f);
-        alphaAnimation.duration = 0.18f;
-        alphaAnimation.removedOnCompletion = NO;
-        alphaAnimation.fillMode = kCAFillModeForwards;
-        alphaAnimation.beginTime = 0.57f;
-        alphaAnimation.timingFunction = CreateCAMediaTimingFunction(0.840, 0.005, 0.085, 1.000);
-        
+        CABasicAnimation *scaleAnimation = [GRCustomRefreshView animationForKeyPath:@"transform"
+                                                                           fromValue:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.5f, 0.5f, 1.f)]
+                                                                             toValue:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.f, 1.f, 1.f)]
+                                                                            duration:0.18f
+                                                                           beginTime:0.57f];
+        CABasicAnimation *alphaAnimation = [GRCustomRefreshView animationForKeyPath:@"opacity"
+                                                                          fromValue:@1
+                                                                            toValue:@0
+                                                                           duration:0.18f
+                                                                          beginTime:0.57f];
         
         thirdAnimation.animations = @[strokeAnimation,rotateAnimation,scaleAnimation, alphaAnimation];
 
@@ -321,6 +312,7 @@
     
     [self.progressLayer addAnimation:thirdAnimation forKey:@"animation"];
 }
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     if([anim isKindOfClass:[CABasicAnimation class]] && flag && self.animationState == GRMiniLoaderAnimationStateFirst){
         CABasicAnimation *basicAnimation = (CABasicAnimation *)anim;
@@ -377,16 +369,15 @@
 
                 break;
             }
-            case GRMiniLoaderAnimationStateFourth:{
-                break;
-            }
             default:break;
                 
         }
     }
 }
 
-
+- (void)addEndRefreshAnimationCompletionHandler:(void (^)(void))completionHandler{
+    _endRefreshAnimationCompletionHandler = completionHandler;
+}
 - (UIColor *)progressTintColor {
 #ifdef __IPHONE_7_0
     if ([self respondsToSelector:@selector(tintColor)]) {
